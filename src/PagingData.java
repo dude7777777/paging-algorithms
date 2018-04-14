@@ -6,6 +6,11 @@ public class PagingData {
 	private int referenceStringUniqueness;
 	private  int numberOfSlots;
 	
+	private Fifo fifo;
+	private Lru lru;
+	private Min min;
+	private Rand rand;
+	
 	//Getters
 	public String getReferenceString() {
 		return this.referenceString;
@@ -43,7 +48,28 @@ public class PagingData {
 	}
 	
 	public void runAlgorithm(String value) {
-		// TODO Auto-generated method stub
+		switch(value) {
+			case "FIFO": {
+				Fifo fifo = new Fifo(this);
+				this.fifo = fifo;
+				break;
+			}
+			case "LRU": {
+				Lru lru = new Lru(this);
+				this.lru = lru;
+				break;
+			}
+			case "MIN": {
+				Min min = new Min(this);
+				this.min = min;
+				break;
+			}
+			case "RAND": {
+				Rand rand = new Rand(this);
+				this.rand = rand;
+				break;
+			}
+		}
 		
 	}
 	
