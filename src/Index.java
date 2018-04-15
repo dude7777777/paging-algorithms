@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Index {
 	
-	public static Random RND = new Random(17);
+	public static Random RND = new Random();
 
 	public static void main(String[] args) {
 		//Get user input
@@ -28,16 +28,9 @@ public class Index {
 		pagingData.runAlgorithm("RAND");
 		
 		//Output
-		pagingData.printOutput("FIFO");
-		pagingData.printOutput("LRU");
-		pagingData.printOutput("MIN");
-		pagingData.printOutput("RAND");
-		pagingData.printOutput("CacheRates");
-		pagingData.printOutput("Best");
-		pagingData.printOutput("Worst");
+		pagingData.printOutput();
 		
 		//Cleanup
 		keyboard.close();
 	}
-
 }

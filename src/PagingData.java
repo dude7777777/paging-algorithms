@@ -6,6 +6,7 @@ public class PagingData {
 	private int referenceStringUniqueness;
 	private  int numberOfSlots;
 	
+	private ArrayList<Algorithm> algorithms = new ArrayList<Algorithm>();
 	private Fifo fifo;
 	private Lru lru;
 	private Min min;
@@ -36,45 +37,53 @@ public class PagingData {
 	//Methods	
 	public void generateRefenceString(int length) {
 		char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-		ArrayList<Character> reference = new ArrayList<Character>();
+		char[] reference = new char[length];
 		int randomNumber, i;
 		
 		for (i=0; i<length; i++) {
 			randomNumber = Index.RND.nextInt(this.referenceStringUniqueness);
 			char x = alphabet[randomNumber];
-			reference.add(x);
+			reference[i] = x;
 		}
-		this.referenceString = reference.toString();
+		
+		String referenceString = new String(reference);
+		this.referenceString = referenceString;
 	}
 	
 	public void runAlgorithm(String value) {
 		switch(value) {
 			case "FIFO": {
 				Fifo fifo = new Fifo(this);
-				this.fifo = fifo;
+				this.algorithms.add(fifo);
 				break;
 			}
 			case "LRU": {
 				Lru lru = new Lru(this);
-				this.lru = lru;
+				this.algorithms.add(lru);
 				break;
 			}
 			case "MIN": {
 				Min min = new Min(this);
-				this.min = min;
+				this.algorithms.add(min);
 				break;
 			}
 			case "RAND": {
 				Rand rand = new Rand(this);
-				this.rand = rand;
+				this.algorithms.add(rand);
 				break;
 			}
 		}
 		
 	}
 	
-	public void printOutput(String string) {
-		// TODO Auto-generated method stub
+	public void printOutput() {
+		for(Algorithm a : this.algorithms) {
+			a.print();
+		}
+		
+		//("CacheRates");
+		//("Best");
+		//("Worst");
 		
 	}
 }

@@ -1,7 +1,7 @@
 
 public class Algorithm {
 	
-	private int numberOfCacheHits;
+	private int numberOfCacheHits=0;
 	private char[][] dataMatrix;
 	
 	//Getters
@@ -18,5 +18,8 @@ public class Algorithm {
 	}
 	public void setDataMatrix(char[][] value) {
 		this.dataMatrix = value;
+	}
+	public void print() {
+		
 	}
 }
