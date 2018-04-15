@@ -7,10 +7,6 @@ public class PagingData {
 	private  int numberOfSlots;
 	
 	private ArrayList<Algorithm> algorithms = new ArrayList<Algorithm>();
-	private Fifo fifo;
-	private Lru lru;
-	private Min min;
-	private Rand rand;
 	
 	//Getters
 	public String getReferenceString() {
@@ -77,13 +73,36 @@ public class PagingData {
 	}
 	
 	public void printOutput() {
+		//Print the matrices
 		for(Algorithm a : this.algorithms) {
-			a.print();
+			a.printMatrix(this);
 		}
 		
-		//("CacheRates");
-		//("Best");
-		//("Worst");
+		//Print the cache hit rates
+		System.out.println("\nCache Hit Rates:\n");
+		for(Algorithm a: this.algorithms) {
+			a.printCacheHits();
+		}
 		
+		//Print the best and worst
+		System.out.println();
+		int best = 0;
+		int worst = 2147483647;
+		String bestName = "";
+		String worstName = "";
+		for(Algorithm a: this.algorithms) {
+			if(a.getNumberOfCacheHits()>best) {
+				best = a.getNumberOfCacheHits();
+				bestName = a.getName();
+			}
+			if(a.getNumberOfCacheHits()<worst) {
+				worst = a.getNumberOfCacheHits();
+				worstName = a.getName();
+			}
+		}
+		System.out.print("Best:  ");
+		System.out.println(bestName);
+		System.out.print("Worst: ");
+		System.out.println(worstName);		
 	}
 }

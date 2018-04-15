@@ -2,9 +2,9 @@
 public class Fifo extends Algorithm {
 	
 	public Fifo(PagingData data) {
-		char[] slots = new char[data.getNumberOfSlots()];
+		super.setName("FIFO ");
 		int currentSlot = 0;
-		int i,j = 0;
+		int i, j = 0;
 		String referenceString = data.getReferenceString();
 		
 		//initialize dataMatrix with spaces
@@ -15,15 +15,16 @@ public class Fifo extends Algorithm {
 			}
 		}
 		//initialize slots with spaces
+		char[] slots = new char[data.getNumberOfSlots()];
 		for(i=0; i<slots.length; i++) {
-			slots[i]=' ';
+			slots[i] = ' ';
 		}
 		
 		//FIFO
 		boolean skip = false;
 		for(i=0; i<referenceString.length(); i++) {
 			skip = false;
-			for(j=0; j<currentSlot; j++) {
+			for(j=0; j<slots.length; j++) {
 				if(slots[j]==referenceString.toCharArray()[i]) {
 					//cache hit
 					this.setNumberOfCacheHits(this.getNumberOfCacheHits()+1);
@@ -45,16 +46,19 @@ public class Fifo extends Algorithm {
 			}
 		}
 		this.setDataMatrix(dataMatrix);
-//		System.out.println(referenceString);
-//		String x;
-//		for(i=0; i<dataMatrix.length; i++) {
-//			x = new String(dataMatrix[i]);			
-//			System.out.println(x);
-//		}
 	}
 	
-	public void print() {
-		System.out.println("sub");
+	public void printMatrix(PagingData data) {
+		char[] matrixLine;
+		int i, j;
+		for(i=0; i<data.getNumberOfSlots(); i++) {
+			System.out.print("FIFO  " + (i+1) + ": ");
+			matrixLine = super.getDataMatrix()[i];
+			for(j=0; j<matrixLine.length; j++) {
+				System.out.print(matrixLine[j]);
+				System.out.print(" ");
+			}
+			System.out.println();
+		}
 	}
-
 }
