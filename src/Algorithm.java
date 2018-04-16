@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 
 public class Algorithm {
 	
@@ -32,14 +33,16 @@ public class Algorithm {
 		
 	}
 	public void printCacheHits() {
+		char[] matrixLine = this.dataMatrix[0];
+		double rate = (double)this.numberOfCacheHits/matrixLine.length;
+		DecimalFormat df = new DecimalFormat("#0.00");
+		
 		System.out.print(this.name);
 		System.out.print(":  ");
 		System.out.print(this.numberOfCacheHits);
 		System.out.print(" of ");
-		char[] matrixLine = this.dataMatrix[0];
 		System.out.print(matrixLine.length);
 		System.out.print(" = ");
-		double rate = this.numberOfCacheHits/matrixLine.length;
-		System.out.println(rate);
+		System.out.println(df.format(rate));
 	}
 }

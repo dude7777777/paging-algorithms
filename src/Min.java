@@ -49,15 +49,12 @@ public class Min extends Algorithm {
 				}
 				//calculate distances
 				for(j=0; j<slots.length; j++) {
-					for(k=1+i; k<referenceString.length()-i; k++) {
+					for(k=i; k<referenceString.length(); k++) {
 						distances[j] = k;
 						if(slots[j]==referenceString.toCharArray()[k]) {
 							break;
 						}
 					}
-				}
-				for(j=0; j<slots.length; j++) {
-					//System.out.println("Slot " + (j+1) + ": " + distances[j]);
 				}
 				
 				//get farthest distance
@@ -86,7 +83,7 @@ public class Min extends Algorithm {
 		for(int times=0; times<=data.getReferenceString().length(); times++) {
 			System.out.print("--");
 		}
-		System.out.println();
+		System.out.println("-------");
 		char[] matrixLine;
 		int i, j;
 		for(i=0; i<data.getNumberOfSlots(); i++) {

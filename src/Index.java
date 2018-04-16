@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Index {
 	
-	public static Random RND = new Random();
+	public static Random RND = new Random(17);
 
 	public static void main(String[] args) {
 		//Get user input

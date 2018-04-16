@@ -54,7 +54,7 @@ public class Rand extends Algorithm {
 		for(int times=0; times<=data.getReferenceString().length(); times++) {
 			System.out.print("--");
 		}
-		System.out.println();
+		System.out.println("-------");
 		char[] matrixLine;
 		int i, j;
 		for(i=0; i<data.getNumberOfSlots(); i++) {
