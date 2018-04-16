@@ -54,6 +54,9 @@ public class Min extends Algorithm {
 						if(slots[j]==referenceString.toCharArray()[k]) {
 							break;
 						}
+						if(k==referenceString.length()-1) {
+							distances[j] = k+1;
+						}
 					}
 				}
 				

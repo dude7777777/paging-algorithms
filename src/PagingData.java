@@ -88,21 +88,37 @@ public class PagingData {
 		System.out.println();
 		int best = 0;
 		int worst = 2147483647;
-		String bestName = "";
-		String worstName = "";
-		for(Algorithm a: this.algorithms) {
+		for(Algorithm a : this.algorithms) {
 			if(a.getNumberOfCacheHits()>best) {
 				best = a.getNumberOfCacheHits();
-				bestName = a.getName();
 			}
 			if(a.getNumberOfCacheHits()<worst) {
 				worst = a.getNumberOfCacheHits();
-				worstName = a.getName();
 			}
 		}
+		ArrayList<String> bestList = new ArrayList<String>();
+		ArrayList<String> worstList = new ArrayList<String>();
+		for(Algorithm a : this.algorithms) {
+			if(a.getNumberOfCacheHits()==best) {
+				bestList.add(a.getName().trim());
+			}
+			if(a.getNumberOfCacheHits()==worst) {
+				worstList.add(a.getName().trim());
+			}
+		}
+		
 		System.out.print("Best:  ");
-		System.out.println(bestName);
+		for(String s : bestList) {
+			System.out.print(s);
+			System.out.print(" ");
+		}
+		System.out.println();
+		
 		System.out.print("Worst: ");
-		System.out.println(worstName);		
+		for(String s : worstList) {
+			System.out.print(s);
+			System.out.print(" ");
+		}
+		System.out.println();
 	}
 }
